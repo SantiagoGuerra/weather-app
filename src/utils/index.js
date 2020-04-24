@@ -8,3 +8,8 @@ export const createElement = curry(string => {
   return element;
 });
 
+export const appendHTML = curry((query, string) => {
+  const element = document.querySelector(query);
+  element.innerHTML = string;
+  return string;
+});
