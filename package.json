@@ -38,6 +38,7 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "rambda": "^5.1.1"
+    "rambda": "^5.1.1",
+    "remixicon": "^2.4.0"
   }
 }
