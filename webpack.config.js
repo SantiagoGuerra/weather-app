@@ -11,15 +11,16 @@ const config = {
     rules: [
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
       {
-        test: /\.scss$/,
+        test: /\.(css|sass|scss)$/,
         use: [
           'style-loader',
           'css-loader',
+          'resolve-url-loader',
           'sass-loader',
         ],
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(jpe?g|png|gif|svg|ttf|woff|woff2|eot|)$/i,
         use: {
           loader: 'file-loader',
           options: {
