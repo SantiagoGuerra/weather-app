@@ -18,18 +18,18 @@
   font-family: var(--font-family);
   color: var(--light-color);
   display: none;
-  height: 190px;
+  height: auto;
   list-style: none;
 }
 
 .search-result-item {
-  height: 38px;
+  height: 44px;
   display: flex;
   align-content: flex-start;
   padding: 6px 12px;
   flex-direction: column;
   position: relative;
-
+  justify-content: center;
   &:hover {
     background: var(--alt-main-color);
     cursor: pointer;
