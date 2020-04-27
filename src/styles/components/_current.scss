@@ -42,6 +42,32 @@
     color: #fff;
     margin-bottom: 24px;
   }
+
+  &-error {
+    box-shadow: none;
+    background: #fff;
+
+    &-message {
+      text-align: center;
+      &__title {
+        color: var(--main-color);
+        font-family: var(--font-family);
+        display: flex;
+        align-items: center;
+
+        & > i {
+          font-size: 22px;
+          display: inline-block;
+          margin-right: 8px;
+        }
+      }
+
+      &__subtitle {
+        color: var(--main-color);
+        font-family: var(--font-family);
+      }
+    }
+  }
 }
 
 .description {

@@ -13,7 +13,10 @@ const onListClick = curry(event => {
   const countryCode = event.target.parentElement.getAttribute('data-city-countryCode');
 
   getWeatherFromName(countryName, countryCode)
-    .then(result => { Current(result.data) })
+    .then(result => { Current(result.data, true) })
+    .catch((err) => {
+      Current(err.data, false)  
+    })
 });
 
 const appendCities = curry(cityList => {
