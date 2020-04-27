@@ -5,6 +5,12 @@
   padding-left: 24px;
   position: relative;
   padding-right: 24px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9000;
+  background: #fff;
 }
 
 #search-results {
@@ -20,6 +26,7 @@
   display: none;
   height: auto;
   list-style: none;
+  background-color: #fff;
 }
 
 .search-result-item {

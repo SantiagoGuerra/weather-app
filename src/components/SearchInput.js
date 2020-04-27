@@ -1,10 +1,11 @@
 import { curry } from 'rambda';
 import axios from 'axios';
 import { createElement } from '../utils';
+import Current from '../components/Current';
 
 const getWeatherFromName = curry((cityName, countryCode) => {
   const API_KEY = '258bddd1149b9057eb93d11a2ab1e5da';
-  return axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryCode}&appid=${API_KEY}`);
+  return axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryCode}&units=metric&appid=${API_KEY}`);
 })
 
 const onListClick = curry(event => {
@@ -12,7 +13,7 @@ const onListClick = curry(event => {
   const countryCode = event.target.parentElement.getAttribute('data-city-countryCode');
 
   getWeatherFromName(countryName, countryCode)
-    .then(result => {console.log(result)})
+    .then(result => { Current(result.data) })
 });
 
 const appendCities = curry(cityList => {

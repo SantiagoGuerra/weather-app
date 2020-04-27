@@ -10,14 +10,16 @@
   <main id="root">
     <header id="header">
       <ul id="search-results">
-        There is not results
+        <li class="search-result-item" data-city-name="${city.name}" data-city-countryCode="${city.countryCode}">
+          <span class="search-result-item__city-name">No results</span>
+          <span class="search-result-item__city-country">Please, try again</span>
+        </li>
       </ul>
     </header>
 
     <div id="content">
 
     </div>
-
   </main>
 </body>
 </html>

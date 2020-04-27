@@ -9,4 +9,14 @@
     color: var(--main-color);
     margin-right: 12px;
   }
+
+  &-current-info {
+    display: flex;
+    height: 100%;
+    margin-right: 12px;
+    & > i {
+      color: #fff;
+      font-size: 43px;
+    }
+  }
 }
