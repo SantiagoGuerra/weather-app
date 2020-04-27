@@ -7,9 +7,12 @@
   justify-content: center;
   align-items: center;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
 
   &-main-info {
-    max-width: 190px;
+    width: 100%;
+    justify-content: center;
     display: flex;
     align-items: center;
   }
@@ -20,5 +23,37 @@
     font-family: var(--font-family);
     font-weight: 600;
     line-height: 90px;
+  }
+
+  &-country-info {
+    font-family: var(--font-family);
+    font-size: 16px;
+    color: #fff;
+  }
+
+  &-weather-information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-family);
+  }
+
+  &-weather-description {
+    color: #fff;
+    margin-bottom: 24px;
+  }
+}
+
+.description {
+  list-style: none;
+  & > li {
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+  }
+
+  &-title {
+    margin-right: 12px;
+    font-weight: 600;
   }
 }
