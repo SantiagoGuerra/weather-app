@@ -3,6 +3,7 @@ import axios from 'axios';
 import { createElement } from '../utils';
 import Current from './Current';
 import Daily from './Daily';
+import Hourly from './Hourly';
 
 const API_KEY = '258bddd1149b9057eb93d11a2ab1e5da';
 
@@ -28,6 +29,10 @@ const onListClick = curry(event => {
           Daily(result.data)
 
           return result.data
+        })
+        .then( data => {
+          Hourly(data)
+          return data
         })
       return coord
     })
