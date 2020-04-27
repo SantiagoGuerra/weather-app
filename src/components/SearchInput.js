@@ -2,20 +2,37 @@ import { curry } from 'rambda';
 import axios from 'axios';
 import { createElement } from '../utils';
 import Current from './Current';
+import Daily from './Daily';
+
+const API_KEY = '258bddd1149b9057eb93d11a2ab1e5da';
+
 
 const getWeatherFromName = curry((cityName, countryCode) => {
-  const API_KEY = '258bddd1149b9057eb93d11a2ab1e5da';
   return axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryCode}&units=metric&appid=${API_KEY}`);
 })
+
+const getWeatherFromCoords = curry( coords => axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=${API_KEY}`))
 
 const onListClick = curry(event => {
   const countryName = event.target.parentElement.getAttribute('data-city-name');
   const countryCode = event.target.parentElement.getAttribute('data-city-countryCode');
 
   getWeatherFromName(countryName, countryCode)
-    .then(result => { Current(result.data, true) })
+    .then(result => {
+      Current(result.data, true) 
+      return result.data.coord;
+    })
+    .then(coord => {
+      getWeatherFromCoords(coord)
+        .then(result => {
+          Daily(result.data)
+
+          return result.data
+        })
+      return coord
+    })
     .catch((err) => {
-      Current(err.data, false)  
+      Current(err.data, false);
     })
 });
 

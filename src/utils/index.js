@@ -15,8 +15,6 @@ export const appendHTML = curry((query, string) => {
 });
 
 export const searchWeatherIcon = curry(group => {
-  console.log(typeof group)
-
   let icon = '';
 
     if(group >= 200 && group <= 232) {

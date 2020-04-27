@@ -1,6 +1,5 @@
 import { curry } from 'rambda';
 import { createElement, searchWeatherIcon } from '../utils';
-import Daily from './Daily';
 
 const Current = curry((data, stateOK) => {
   const parentElement = document.querySelector('#content');
@@ -24,8 +23,6 @@ const Current = curry((data, stateOK) => {
 
     parentElement.appendChild(current)
 
-    Daily(data)
-    return current;
   } else {
 
     const error = createElement('<div class="current-error-message"><h2 class="current-error-message__title">N<i class="ri-emotion-unhappy-line"></i>  RESULTS </h2><p class="current-error-message__subtitle">Please, try again</p></div>')
@@ -35,8 +32,10 @@ const Current = curry((data, stateOK) => {
     current.classList.add('current-error')
 
     parentElement.appendChild(current)
-    return current
   }
+
+  return current;
+
 
   
 })
