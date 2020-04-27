@@ -1,7 +1,7 @@
 import { curry } from 'rambda';
 import axios from 'axios';
 import { createElement } from '../utils';
-import Current from '../components/Current';
+import Current from './Current';
 
 const getWeatherFromName = curry((cityName, countryCode) => {
   const API_KEY = '258bddd1149b9057eb93d11a2ab1e5da';

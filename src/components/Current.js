@@ -1,6 +1,6 @@
 import { curry } from 'rambda';
-import { createElement } from '../utils';
-import { searchWeatherIcon } from '../utils';
+import { createElement, searchWeatherIcon } from '../utils';
+import Daily from './Daily';
 
 const Current = curry((data, stateOK) => {
   const parentElement = document.querySelector('#content');
@@ -23,6 +23,8 @@ const Current = curry((data, stateOK) => {
     current.classList.add('animated', 'slideInDown')
 
     parentElement.appendChild(current)
+
+    Daily(data)
     return current;
   } else {
 
