@@ -45,9 +45,7 @@ const myChart = new Chart(ctx, {
     }
 });
 
-  console.log(chart)
 
-  console.log(data.hourly)
 })
 
 export default Hourly;

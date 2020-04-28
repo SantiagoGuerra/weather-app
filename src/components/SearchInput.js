@@ -75,6 +75,15 @@ const onBlur = curry(() => {
 
 const onKeyUp = curry(event => {
   const { value } = event.target;
+
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+
+    event.target.blur()
+    // Trigger the button element with a click
+    return cityWeatherRequest(value, '');
+  }
   if (value.length > 0) {
     getCity(value)
       .then(result => appendCities(result.data.data));
