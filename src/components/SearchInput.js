@@ -14,11 +14,8 @@ const getWeatherFromName = curry((cityName, countryCode) => {
 
 const getWeatherFromCoords = curry( coords => axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=${API_KEY}`))
 
-const onListClick = curry(event => {
-  const countryName = event.target.parentElement.getAttribute('data-city-name');
-  const countryCode = event.target.parentElement.getAttribute('data-city-countryCode');
-
-  getWeatherFromName(countryName, countryCode)
+const cityWeatherRequest = curry((countryName, countryCode) => {
+  return getWeatherFromName(countryName, countryCode)
     .then(result => {
       Current(result.data, true) 
       return result.data.coord;
@@ -39,6 +36,12 @@ const onListClick = curry(event => {
     .catch((err) => {
       Current(err.data, false);
     })
+})
+const onListClick = curry(event => {
+  const countryName = event.target.parentElement.getAttribute('data-city-name');
+  const countryCode = event.target.parentElement.getAttribute('data-city-countryCode');
+
+  cityWeatherRequest(countryName, countryCode)  
 });
 
 const appendCities = curry(cityList => {
