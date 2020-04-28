@@ -8,9 +8,9 @@ const Hourly = curry( data => {
 
   const parentElement = document.querySelector('#content');
 
-  const hourly = createElement('<div><h2>Hourly</h2></div>')
+  const hourly = createElement('<div class="hourly"><h2>Hourly</h2></div>')
 
-  const chart = createElement('<canvas id="hourly-data" width="100%" height="300px"></canvas>')
+  const chart = createElement('<canvas id="hourly-data" class="hourly-chart"></canvas>')
 
   hourly.appendChild(chart)
 
@@ -22,7 +22,7 @@ const myChart = new Chart(ctx, {
     data: {
         labels: data.hourly.map(d => moment(d.dt * 1000).format('LT')),
         datasets: [{
-            label: 'Temperature',
+            label: 'Temperature Cº',
             data: data.hourly.map(d => d.temp),
             backgroundColor: [
                 'rgba(124, 95, 255, 0.40)',
@@ -30,7 +30,7 @@ const myChart = new Chart(ctx, {
             borderColor: [
                 '#7D5FFF',
             ],
-            borderWidth: 1
+            borderWidth: 2
         }]
     },
     options: {
@@ -41,7 +41,7 @@ const myChart = new Chart(ctx, {
                 }
             }]
         },
-        responsive: true,
+        // responsive: true
     }
 });
 

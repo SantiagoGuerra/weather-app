@@ -52,19 +52,33 @@
       &__title {
         color: var(--main-color);
         font-family: var(--font-family);
-        display: flex;
-        align-items: center;
+        text-align: center;
+
+        @media screen and (min-width: 720px) {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
 
         & > i {
           font-size: 22px;
-          display: inline-block;
-          margin-right: 8px;
+          display: none;
+          @media screen and (min-width: 720px) {
+            display: inline-block;
+            
+          }
+        }
+
+        @media screen and (min-width: 720px) {
+          display: flex;
         }
       }
 
       &__subtitle {
         color: var(--main-color);
         font-family: var(--font-family);
+        text-align: center;
       }
     }
   }
@@ -81,5 +95,14 @@
   &-title {
     margin-right: 12px;
     font-weight: 600;
+  }
+}
+
+.letter-o {
+  font-style: none;
+  display: inline-block;
+
+  @media screen and (min-width: 720px) {
+    display: none;
   }
 }
