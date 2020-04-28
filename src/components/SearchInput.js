@@ -8,40 +8,37 @@ import Hourly from './Hourly';
 const API_KEY = '258bddd1149b9057eb93d11a2ab1e5da';
 
 
-const getWeatherFromName = curry((cityName, countryCode) => {
-  return axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryCode}&units=metric&appid=${API_KEY}`);
-})
+const getWeatherFromName = curry((cityName, countryCode) => axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryCode}&units=metric&appid=${API_KEY}`));
 
-const getWeatherFromCoords = curry( coords => axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=${API_KEY}`))
+const getWeatherFromCoords = curry(coords => axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=${API_KEY}`));
 
-const cityWeatherRequest = curry((countryName, countryCode) => {
-  return getWeatherFromName(countryName, countryCode)
-    .then(result => {
-      Current(result.data, true) 
-      return result.data.coord;
-    })
-    .then(coord => {
-      getWeatherFromCoords(coord)
-        .then(result => {
-          Daily(result.data)
+// eslint-disable-next-line max-len
+const cityWeatherRequest = curry((countryName, countryCode) => getWeatherFromName(countryName, countryCode)
+  .then(result => {
+    Current(result.data, true);
+    return result.data.coord;
+  })
+  .then(coord => {
+    getWeatherFromCoords(coord)
+      .then(result => {
+        Daily(result.data);
 
-          return result.data
-        })
-        .then( data => {
-          Hourly(data)
-          return data
-        })
-      return coord
-    })
-    .catch((err) => {
-      Current(err.data, false);
-    })
-})
+        return result.data;
+      })
+      .then(data => {
+        Hourly(data);
+        return data;
+      });
+    return coord;
+  })
+  .catch((err) => {
+    Current(err.data, false);
+  }));
 const onListClick = curry(event => {
   const countryName = event.target.parentElement.getAttribute('data-city-name');
   const countryCode = event.target.parentElement.getAttribute('data-city-countryCode');
 
-  cityWeatherRequest(countryName, countryCode)  
+  cityWeatherRequest(countryName, countryCode);
 });
 
 const appendCities = curry(cityList => {
@@ -77,17 +74,17 @@ const onKeyUp = curry(event => {
   const { value } = event.target;
 
   if (event.keyCode === 13) {
-    // Cancel the default action, if needed
     event.preventDefault();
 
-    event.target.blur()
-    // Trigger the button element with a click
+    event.target.blur();
     return cityWeatherRequest(value, '');
   }
   if (value.length > 0) {
     getCity(value)
       .then(result => appendCities(result.data.data));
   }
+
+  return event;
 });
 
 
