@@ -13,5 +13,11 @@
       outline: none;
       border-color: var(--main-color);
     }
+
+    @media screen and (min-width: 1135px) {
+      max-width: 720px;
+    }
   }
+
+ 
 }

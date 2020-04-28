@@ -11,6 +11,7 @@
   width: 100%;
   z-index: 9000;
   background: #fff;
+  justify-content: center;
 }
 
 #search-results {
@@ -27,6 +28,12 @@
   height: auto;
   list-style: none;
   background-color: #fff;
+
+  @media screen and (min-width: 1135px) {
+    max-width: 764px;
+    left: auto;
+    margin: 0;
+  }
 }
 
 .search-result-item {
