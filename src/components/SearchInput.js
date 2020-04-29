@@ -8,18 +8,18 @@ import Hourly from './Hourly';
 const API_KEY = '258bddd1149b9057eb93d11a2ab1e5da';
 
 
-const getWeatherFromName = curry((cityName, countryCode) => axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryCode}&units=metric&appid=${API_KEY}`));
+const getWeatherFromName = curry((cityName, countryCode, metricType) => axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryCode}&units=${metricType}&appid=${API_KEY}`));
 
-const getWeatherFromCoords = curry(coords => axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=${API_KEY}`));
+const getWeatherFromCoords = curry((coords, metricType) => axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&units=${metricType}&appid=${API_KEY}`));
 
 // eslint-disable-next-line max-len
-const cityWeatherRequest = curry((countryName, countryCode) => getWeatherFromName(countryName, countryCode)
+const cityWeatherRequest = curry((countryName, countryCode, metricType) => getWeatherFromName(countryName, countryCode, metricType)
   .then(result => {
     Current(result.data, true);
     return result.data.coord;
   })
   .then(coord => {
-    getWeatherFromCoords(coord)
+    getWeatherFromCoords(coord, metricType)
       .then(result => {
         Daily(result.data);
 
@@ -37,8 +37,10 @@ const cityWeatherRequest = curry((countryName, countryCode) => getWeatherFromNam
 const onListClick = curry(event => {
   const countryName = event.target.parentElement.getAttribute('data-city-name');
   const countryCode = event.target.parentElement.getAttribute('data-city-countryCode');
-
-  cityWeatherRequest(countryName, countryCode);
+  const getTempMetric = document.querySelector('#toggle-temp')
+  const getTempMetricType = getTempMetric.getAttribute('metric-type');
+  getTempMetric.setAttribute('city-name', countryName);
+  cityWeatherRequest(countryName, countryCode, getTempMetricType);
 });
 
 const appendCities = curry(cityList => {
@@ -77,7 +79,10 @@ const onKeyUp = curry(event => {
     event.preventDefault();
 
     event.target.blur();
-    return cityWeatherRequest(value, '');
+    const getTempMetric = document.querySelector('#toggle-temp')
+    const getTempMetricType = getTempMetric.getAttribute('metric-type');
+    getTempMetric.setAttribute('city-name', value);
+    return cityWeatherRequest(value, '', getTempMetricType);
   }
   if (value.length > 0) {
     getCity(value)

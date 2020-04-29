@@ -37,3 +37,6 @@ export const searchWeatherIcon = curry(group => {
 
   return icon;
 });
+
+
+export const detectTempMetric = curry(metric => (metric.toLowerCase() === 'metric' ? 'celsius' : 'fahrenheit'));
