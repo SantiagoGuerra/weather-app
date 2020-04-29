@@ -19,7 +19,9 @@ const Current = curry((data, stateOK) => {
     current.appendChild(countryInformation);
     current.appendChild(weatherInformation);
 
-    current.classList.add('animated', 'slideInDown');
+
+    current.classList.add('animated', 'slideInDown', `weather-${(data.weather[0].id / 100).toFixed()}`);
+   
 
     parentElement.appendChild(current);
   } else {

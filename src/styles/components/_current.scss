@@ -10,6 +10,12 @@
   display: flex;
   flex-direction: column;
 
+
+  @media screen and (min-width: 1135px) {
+    margin-top: 90px;
+    height: 520px;
+  }
+
   &-main-info {
     width: 100%;
     justify-content: center;
@@ -49,6 +55,7 @@
 
     &-message {
       text-align: center;
+
       &__title {
         color: var(--main-color);
         font-family: var(--font-family);
@@ -61,12 +68,13 @@
           text-align: center;
         }
 
-        & > i {
+        &>i {
           font-size: 22px;
           display: none;
+
           @media screen and (min-width: 720px) {
             display: inline-block;
-            
+
           }
         }
 
@@ -86,7 +94,8 @@
 
 .description {
   list-style: none;
-  & > li {
+
+  &>li {
     display: flex;
     justify-content: space-between;
     color: #fff;
@@ -104,5 +113,75 @@
 
   @media screen and (min-width: 720px) {
     display: none;
+  }
+}
+
+.weather {
+
+  &-2 {
+    background: url('https://images.pexels.com/photos/1118869/pexels-photo-1118869.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1120&w=940');
+    background-attachment: fixed;
+    background-size: cover;
+    transition: .3s all ease-in-out;
+
+    &:hover {
+      background: var(--main-color)
+    }
+  }
+
+  &-3 {
+    background: url('https://images.pexels.com/photos/166360/pexels-photo-166360.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1120&w=940');
+
+    background-attachment: fixed;
+    background-size: cover;
+    transition: .3s all ease-in-out;
+
+    &:hover {
+      background: var(--main-color)
+    }
+  }
+
+  &-5 {
+    background: url('https://images.pexels.com/photos/2181075/pexels-photo-2181075.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1120&w=940');
+    background-attachment: fixed;
+    background-size: cover;
+    transition: .3s all ease-in-out;
+
+    &:hover {
+      background: var(--main-color)
+    }
+  }
+
+  &-6 {
+    background: url('https://images.pexels.com/photos/730256/pexels-photo-730256.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1120&w=940');
+    background-attachment: fixed;
+    background-size: cover;
+    transition: .3s all ease-in-out;
+
+    &:hover {
+      background: var(--main-color)
+    }
+  }
+
+  &-7 {
+    background: url('https://images.pexels.com/photos/626155/pexels-photo-626155.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1120&w=940');
+    background-attachment: fixed;
+    background-size: cover;
+    transition: .3s all ease-in-out;
+
+    &:hover {
+      background: var(--main-color)
+    }
+  }
+
+  &-8 {
+    background: url('https://images.pexels.com/photos/912110/pexels-photo-912110.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1120&w=940');
+    background-attachment: fixed;
+    background-size: cover;
+    transition: .3s all ease-in-out;
+
+    &:hover {
+      background: var(--main-color)
+    }
   }
 }
