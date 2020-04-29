@@ -1,10 +1,12 @@
 import { curry } from 'rambda';
 import Chart from 'chart.js';
 import moment from 'moment';
-import { createElement } from '../utils';
+import { createElement, detectTempMetric } from '../utils';
 
 const Hourly = curry(data => {
   const parentElement = document.querySelector('#content');
+
+  const metricType = document.querySelector('#toggle-temp').getAttribute('metric-type');
 
   const hourly = createElement('<div class="hourly"><h2>Hourly</h2></div>');
 
@@ -21,7 +23,7 @@ const Hourly = curry(data => {
     data: {
       labels: data.hourly.map(d => moment(d.dt * 1000).format('LT')),
       datasets: [{
-        label: 'Temperature Cº',
+        label: `Temperature ${detectTempMetric(metricType)[0].toUpperCase()}º`,
         data: data.hourly.map(d => d.temp),
         backgroundColor: [
           'rgba(124, 95, 255, 0.40)',

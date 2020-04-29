@@ -1,5 +1,6 @@
 import SearchInput from './SearchInput';
 import { createElement } from '../utils';
+import { cityWeatherRequest } from '../actions';
 
 export default function App() {
   const HeaderLayout = document.querySelector('#header');
@@ -12,16 +13,20 @@ export default function App() {
   const toggleTempItemFaTarget = document.querySelector('.toggle-temp--item__fa');
 
 
-  toggleTempItemCeTarget.addEventListener('click', e => {
+  toggleTempItemCeTarget.addEventListener('click', () => {
+    const cityName = toggleTempTarget.getAttribute('city-name');
     toggleTempItemCeTarget.classList.toggle('toggle-temp--item__selected');
     toggleTempItemFaTarget.classList.toggle('toggle-temp--item__selected');
     toggleTempTarget.setAttribute('metric-type', 'metric');
+
+    cityWeatherRequest(cityName, '', 'metric');
   });
 
-  toggleTempItemFaTarget.addEventListener('click', e => {
+  toggleTempItemFaTarget.addEventListener('click', () => {
+    const cityName = toggleTempTarget.getAttribute('city-name');
     toggleTempItemFaTarget.classList.toggle('toggle-temp--item__selected');
     toggleTempItemCeTarget.classList.toggle('toggle-temp--item__selected');
     toggleTempTarget.setAttribute('metric-type', 'imperial');
-
-  })
+    cityWeatherRequest(cityName, '', 'imperial');
+  });
 }

@@ -9,7 +9,6 @@ const Current = curry((data, stateOK) => {
   const current = createElement('<div class="current"></div>');
 
   if (stateOK) {
-
     const metricType = document.querySelector('#toggle-temp').getAttribute('metric-type');
 
     const mainInformation = createElement(`<div class="current-main-info"><span class="icon-current-info">${searchWeatherIcon(data.weather[0].id)}</span> <span class="current-main-info__temp">${data.main.temp.toFixed()}</span> <i class="ri-${detectTempMetric(metricType)}-fill icon-celsius"></i></div>`);
@@ -24,7 +23,7 @@ const Current = curry((data, stateOK) => {
 
 
     current.classList.add('animated', 'slideInDown', `weather-${(data.weather[0].id / 100).toFixed()}`);
-   
+
 
     parentElement.appendChild(current);
   } else {
