@@ -1,0 +1,8 @@
+#content {
+  margin: 0px 24px;
+
+  @media screen and (min-width: 1135px) {
+    max-width: 1120px;
+    margin: auto;
+  }
+}

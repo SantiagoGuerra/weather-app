@@ -1,0 +1,28 @@
+.icon {
+  &-search {
+    font-size: 18px;
+    color: var(--main-color);
+  }
+
+  &-location {
+    font-size: 18px;
+    color: var(--main-color);
+    margin-right: 12px;
+  }
+
+  &-current-info {
+    display: flex;
+    height: 100%;
+    margin-right: 12px;
+    & > i {
+      color: #fff;
+      font-size: 43px;
+    }
+  }
+
+  &-celsius {
+    // margin-left: 12px;
+    font-size: 43px;
+    color: #fff;
+  }
+}

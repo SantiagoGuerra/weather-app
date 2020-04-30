@@ -1,0 +1,23 @@
+.input {
+  &-search {
+    height: 32px;
+    border: 1px solid var(--light-color);
+    width: 100%;
+    display: inline-block;
+    padding-left: 12px;
+    padding-right: 12px;
+    font-size: 12px;
+    font-family: var(--font-family);
+    border-right-color: transparent;
+    &:focus {
+      outline: none;
+      border-color: var(--main-color);
+    }
+
+    @media screen and (min-width: 1135px) {
+      max-width: 720px;
+    }
+  }
+
+ 
+}

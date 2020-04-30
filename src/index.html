@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main id="root">
+    <header id="header">
+      <ul id="search-results">
+        <li class="search-result-item" data-city-name="${city.name}" data-city-countryCode="${city.countryCode}">
+          <span class="search-result-item__city-name">No results</span>
+          <span class="search-result-item__city-country">Please, try again</span>
+        </li>
+      </ul>
+    </header>
+
+    <div id="content">
+      <div class="current current-error">
+        <div class="current-error-message"><h2 class="current-error-message__title">C<i class="ri-search-2-line"></i><span class="letter-o">O</span>ME  AND KN<i class="ri-earth-line"></i><span class="letter-o">O</span>W THE TEMPERATURE! </h2><p class="current-error-message__subtitle">Access current weather data for any location on Earth including over 200,000 cities!</p></div>
+
+      </div>
+    </div>
+
+    <div id="toggle-temp" class="toggle-temp" metric-type="metric" city-name="">
+      <div class="toggle-temp--item toggle-temp--item__ce toggle-temp--item__selected">
+        <i class="ri-celsius-line"></i>
+      </div>
+      <div class="toggle-temp--item toggle-temp--item__fa">
+        <i class="ri-fahrenheit-line"></i>
+      </div>
+
+    </div>
+  </main>
+</body>
+</html>

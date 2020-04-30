@@ -1,0 +1,38 @@
+.toggle-temp {
+  position: fixed;
+  left: 0;
+  top: 120px;
+  z-index: 999;
+  width: 42px;
+
+  
+  & > i {
+    color: #fff;
+    font-size: 24px;
+  }
+
+  &--item {
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    color: var(--main-color);
+    transition: .3s all ease-in-out;
+
+
+    &:hover {
+      background: var(--main-color);
+      color: #fff;
+    }
+
+    &__selected {
+      width: 62px;
+      background: var(--main-color);
+      color: #fff;
+    }
+  }
+
+  
+
+}

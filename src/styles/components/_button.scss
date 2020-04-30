@@ -1,0 +1,22 @@
+.button {
+  &-search {
+    height: 32px;
+    border: 1px solid var(--light-color);
+    padding-right: 12px;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    background-color: #fff;
+    border-left-color: transparent;
+
+    &:hover {
+      cursor: pointer;
+      background: var(--main-color);
+      border-color: var(--main-color);
+
+      & > .icon-search {
+        color: #fff;
+      }
+    }
+  }
+}
